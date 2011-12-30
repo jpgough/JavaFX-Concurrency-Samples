@@ -1,0 +1,7 @@
+This project is set up to show concurrency examples using JavaFX. The user interface is fairly crude for now until we get time to tidy up the interface.
+
+To get the project working you will need to
+
+1. Open in NetBeans
+
+2. Change the Resource to use your own Java environment that you have created in NetBeans that has a JavaFX component to it. How to do this can be located here: http://netbeans.org/kb/docs/java/javafx-setup.html
