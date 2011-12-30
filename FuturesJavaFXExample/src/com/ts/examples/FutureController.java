@@ -5,6 +5,8 @@
 package com.ts.examples;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,6 +45,7 @@ public class FutureController implements Initializable {
     private void cancelFuture() {
         futureManager.cancel( true );
         appendToLogBox( "Cancelled The Future" );
+        Map<String> m = new HashMap<>();
     }
             
     @FXML
