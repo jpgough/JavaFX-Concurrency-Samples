@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400" prefWidth="640" xmlns:fx="http://javafx.com/fxml" fx:controller="com.ts.examples.FutureController" >
+    <children>
+        <VBox>
+            <HBox>
+                <TextField id="secondsTextField" layoutX="0" layoutY="0" prefWidth="25" fx:id="secondsTextField" />
+                <Label id="secondsLabel" text="seconds" layoutX="26" layoutY="2"  /> 
+            </HBox>
+            <HBox>
+                <Label text="Message:" />
+                <TextField id="futureMessageTextField" fx:id="futureMessageTextField" />
+            </HBox>
+            <Button id="beginFutureButton" layoutX="0" layoutY="30" text="Begin" onAction="#beginFuture" fx:id="beginFutureButton" />
+        </VBox>
+        
+        <VBox layoutY="70">
+            <Button id="cancelButton" text="cancel()" onAction="#cancelFuture" fx:id="cancelButton" />
+            <Button id="getButton" text="get()" onAction="#getFuture" fx:id="getButton" />
+            <Button id="isCancellableButton" text="isFutureCancellable" onAction="#isFutureCancellable" fx:id="isCancellableButton" />
+            <Button id="isDoneButton" text="isDone()" onAction="#isFutureDone" fx:id="isDoneButton" />
+            
+        </VBox>
+        
+        <VBox layoutX="250" >
+            <TextArea id="logTextArea" text="Not Started" fx:id="logTextArea" />
+            
+        </VBox>
+    </children>
+</AnchorPane>
