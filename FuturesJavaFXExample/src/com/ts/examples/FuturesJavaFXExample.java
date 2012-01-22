@@ -24,7 +24,9 @@ public class FuturesJavaFXExample extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FutureView.fxml"));
         
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("FutureManager.css").toExternalForm());
+        stage.setScene(scene);
         stage.show();
     }
 }
