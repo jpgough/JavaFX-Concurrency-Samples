@@ -5,12 +5,13 @@
 package com.ts.examples;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -23,29 +24,32 @@ public class FutureController implements Initializable {
     private FutureManager futureManager;
     
     public FutureController() {
-        futureManager = new FutureManager();
+        futureManager = new FutureManager(this);
     }
     
     @FXML
     private TextArea logTextArea;
     
     @FXML
-    private TextField secondsTextField;
+    private Slider duration;
     
     @FXML
     private TextField futureMessageTextField;
     
     @FXML
+    private ProgressIndicator spinner;
+    
+    @FXML
     private void beginFuture(ActionEvent event) {
-        appendToLogBox( "Begin Future Task in " + secondsTextField.getText() );
-        futureManager.createFuture(Integer.valueOf(secondsTextField.getText()), futureMessageTextField.getText() );
+        int secs = (int) duration.getValue();
+        appendToLogBox( "Begin Future Task in " + secs);
+        futureManager.createFuture(secs, futureMessageTextField.getText());
     }
     
     @FXML
     private void cancelFuture() {
         futureManager.cancel( true );
         appendToLogBox( "Cancelled The Future" );
-        Map<String> m = new HashMap<>();
     }
             
     @FXML
@@ -70,5 +74,23 @@ public class FutureController implements Initializable {
     
     private void appendToLogBox( String newMessage ) {
         logTextArea.appendText("\n" + newMessage );
+    }
+
+    void showSpinner() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                spinner.setVisible(true);
+            }
+        });
+    }
+
+    void hideSpinner() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                spinner.setVisible(false);
+            }
+        });
     }
 }
